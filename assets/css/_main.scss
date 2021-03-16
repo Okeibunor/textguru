@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  transition: all cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.alert {
+  border: 2px solid;
+  padding: 10px 30px;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  border-color: #FC2B36;
+  background-color: #fd3d47;
+  color: white;
+}
+
+.alert-success {
+  border-color: #008f4a;
+  background-color: #00ca68;
+  color: white;
+}
+
+.error_text {
+  color: #fd3d47 !important;
+}
+
+.input_error {
+  border-color: #FC2B36;
+}
