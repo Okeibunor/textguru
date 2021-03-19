@@ -30,7 +30,7 @@
       <img class="blob" src="@/assets/blob.svg" alt="blob" />
       <div
         data-aos="fade-up"
-        data-aos-offset="200"
+        data-aos-offset="100"
         data-aos-delay="50"
         data-aos-duration="1000"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
