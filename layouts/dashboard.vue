@@ -182,11 +182,12 @@ a {
       position: absolute;
       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
       padding: 10px;
-      top: 55px;
+      top: 45px;
       border-radius: 5px;
       background: white;
       transform: scale(0);
-      transform-origin: left;
+      transform-origin: center;
+      z-index: 10;
 
       li {
         list-style-type: none;

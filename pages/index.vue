@@ -1,6 +1,15 @@
 <template>
   <main>
     <div class="container">
+      <div class="mobileMenu" :class="{ visible: showMenu }">
+        <ul>
+          <li><NuxtLink to="/">Home</NuxtLink></li>
+          <li><NuxtLink to="/">About Us</NuxtLink></li>
+          <li><NuxtLink to="/">Contact Us</NuxtLink></li>
+          <li><NuxtLink to="/signup">Create Account</NuxtLink></li>
+          <li><NuxtLink to="/login">Sign In</NuxtLink></li>
+        </ul>
+      </div>
       <nav>
         <img class="logo" src="@/assets/logo.svg" alt="logo" />
         <ul>
@@ -12,6 +21,10 @@
           <li><NuxtLink to="login">Sign In</NuxtLink></li>
           <li><NuxtLink to="signup">Sign Up</NuxtLink></li>
         </ul>
+        <span
+          @click="toggleMenu"
+          :class="[!showMenu ? 'icon_hamburger' : 'icon_close']"
+        ></span>
         <img class="pattern" src="@/assets/pattern.svg" alt="pattern" />
       </nav>
       <img class="blob" src="@/assets/blob.svg" alt="blob" />
@@ -34,10 +47,10 @@
           <p>export to PDF or save to cloud</p>
         </div>
         <div class="hero-links">
-          <a href="#" class="signup">Start Free Trial</a>
-          <a href="#" class="login"
-            >Login <img src="@/assets/login.svg" alt="login"
-          /></a>
+          <NuxtLink class="signup" to="signup">Start Free Trial</NuxtLink>
+          <NuxtLink class="login" to="login"
+            >Sign In <img src="@/assets/login.svg" alt="login"
+          /></NuxtLink>
         </div>
       </div>
       <img
@@ -85,7 +98,7 @@
         </div>
       </div>
       <div
-        class="offer-body"
+        class="offer-body second"
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-offset="-50"
@@ -173,17 +186,84 @@
 export default {
   name: "index",
   auth: false,
+  data: function () {
+    return {
+      showMenu: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+$small: 600px;
+$medium: 768px;
+$large: 992px;
+$xlarge: 1200px;
+
 @import "../assets/css/_typography.scss";
 @import "../assets/css/_colors.scss";
+
 main {
   cursor: url("@/assets/hand.svg"), auto;
 }
+.mobileMenu {
+  display: none;
+  @include medium-text($primary-blue);
+  @media screen and (max-width: $small) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    width: 100vw;
+    height: 60vh;
+    background: white;
+    z-index: 100;
+    border-radius: 0 0 1.5rem 1.5rem;
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: inherit;
+      li {
+        list-style-type: none;
+        font-family: $headerfont;
+        position: relative;
+      }
+      li:hover::after {
+        content: "";
+        bottom: -5px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 0.15rem;
+        background-color: yellowgreen;
+        transform-origin: left;
+        transform: scale(0);
+        border-radius: 0.125rem;
+        transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+    }
+    transform: scale(0);
+    transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: 92vw 1.6rem;
+
+    &.visible {
+      transform: scale(1);
+    }
+  }
+}
 .container {
-  margin: 25px 10vw;
+  margin: 1.5rem 10vw;
+  @media screen and (max-width: $small) {
+    margin: 1.5rem 7vw;
+  }
 }
 a {
   text-decoration: none;
@@ -191,12 +271,15 @@ a {
 nav {
   display: grid;
   grid-template-columns: 2.3fr 4.5fr 1.5fr;
-  font-size: 20px;
+  @media screen and (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
+  font-size: 1.25rem;
   font-family: $bodyfont;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   .logo {
-    width: 200px;
-    height: 50px;
+    width: 13rem;
+    height: 4rem;
     object-fit: contain;
   }
   .pattern {
@@ -206,12 +289,49 @@ nav {
     z-index: -10;
     width: 75vw;
     object-fit: contain;
+    @media screen and (max-width: $small) {
+      width: 78vw;
+    }
+  }
+
+  %icon {
+    height: 3.125rem;
+    width: 3.125rem;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  .icon_hamburger {
+    @extend %icon;
+    background: url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d)'%3E%3Cpath d='M19.5216 24.3576H29.4947M6.69897 8.20001H29.4947H6.69897ZM6.69897 16.2788H29.4947H6.69897Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d' x='-4' y='0.121216' width='44.1936' height='42.3152' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'/%3E%3CfeOffset dy='5'/%3E%3CfeGaussianBlur stdDeviation='2.5'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E%0A")
+      no-repeat center;
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 1.5rem;
+    right: 7vw;
+    @media screen and (max-width: $small) {
+      display: unset;
+    }
+  }
+  .icon_close {
+    @extend %icon;
+    background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L15 15M1 15L15 1' stroke='%23323377' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")
+      no-repeat center;
+    z-index: 100;
+    position: fixed;
+    top: 1.5rem;
+    right: 7vw;
   }
 
   ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    @media screen and (max-width: $small) {
+      display: none;
+    }
   }
   ul.right-nav {
     justify-content: space-evenly;
@@ -226,7 +346,7 @@ nav {
   li,
   li a {
     list-style-type: none;
-    margin: auto 30px;
+    margin: auto 2rem;
     display: block;
     position: relative;
     cursor: pointer;
@@ -239,10 +359,11 @@ nav {
     left: 0;
     position: absolute;
     width: 100%;
-    height: 3px;
+    height: 0.15rem;
     background-color: yellowgreen;
     transform-origin: left;
     transform: scale(0);
+    border-radius: 0.125rem;
     transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   li:hover::after,
@@ -257,26 +378,32 @@ nav {
   position: absolute;
   left: 0;
   top: 90vh;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 .blob {
   position: absolute;
-  left: 50px;
+  left: 3.125rem;
   z-index: -10;
-  width: 250px;
-  height: 200px;
+  width: 10.25rem;
+  height: 10.25rem;
   object-fit: contain;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 .hero {
-  margin: 100px auto;
+  margin: 6.25rem auto;
   .hero-body {
-    margin: 30px auto;
+    margin: 2rem auto;
   }
   .hero-links {
-    margin-top: 50px;
+    margin-top: 3.125rem;
     a.signup {
       background-color: $primary-blue;
       color: white;
-      margin-right: 20px;
+      margin-right: 1.25rem;
     }
     a.login {
       background-color: $sky-blue;
@@ -294,28 +421,31 @@ nav {
   a {
     @include medium-text;
     text-decoration: none;
-    padding: 20px;
+    padding: 1.25rem;
     font-weight: 650;
     font-family: $headerfont;
-    border-radius: 10px;
+    border-radius: 1rem;
     img {
-      width: 30px;
-      height: 30px;
+      width: 2rem;
+      height: 2rem;
       object-fit: contain;
       vertical-align: text-bottom;
-      margin-left: 10px;
+      margin-left: 1rem;
     }
   }
 }
 .offer-header {
   display: flex;
   justify-content: center;
-  margin: 40vh auto 10vh auto;
+  @media screen and (min-width: $large) {
+    margin: 40vh auto 10vh auto;
+  }
+  margin: 15vh auto 5vh;
   position: relative;
 }
 .offer-header span {
   position: relative;
-  @include heading-2($primary-blue);
+  @include heading-3($primary-blue);
   font-family: $bodyfont;
 }
 .offer-header span::after {
@@ -325,23 +455,40 @@ nav {
   left: 0;
   position: absolute;
   width: 100%;
-  height: 4px;
+  height: 0.25rem;
   transform-origin: center;
   transform: scale(0.8);
   background-color: yellowgreen;
 }
 .donut {
   position: absolute;
-  right: 150px;
-  top: 10px;
-  width: 200px;
-  height: 200px;
+  right: 9rem;
+  top: 1rem;
+  width: 10.25rem;
+  height: 10.25rem;
   object-fit: contain;
   z-index: -10;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 .offer-body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  @media screen and (max-width: $small) {
+    grid-template-columns: 1fr;
+    margin: 10vh auto;
+    &.second {
+      div {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      img {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
   column-gap: 5vw;
   img {
     width: 100%;
@@ -354,7 +501,7 @@ nav {
     h3 {
       @include heading-3($primary-blue);
       font-family: $headerfont;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
     }
     p {
       @include medium-text($secondary-blue);
@@ -374,6 +521,11 @@ nav {
   align-items: center;
   h2 {
     @include heading-2(white);
+    @media screen and (max-width: $small) {
+      @include heading-3();
+      margin: auto;
+      text-align: center;
+    }
   }
   p {
     @include medium-text(white);
@@ -387,29 +539,38 @@ nav {
     color: white;
     margin-right: 20px;
     text-decoration: none;
-    border-radius: 15px;
-    padding: 15px 40px;
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
   }
 }
 #compound {
   position: absolute;
-  top: -80px;
-  left: -70px;
+  top: -5rem;
+  left: -4.5rem;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 #halfDonut {
   position: absolute;
   object-fit: cover;
-  bottom: 50px;
+  bottom: 3.125rem;
   right: 0;
+  @media only screen and (max-width: $small) {
+    display: none;
+  }
 }
 nav.bottom-nav {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  padding: 25px 15px;
+  padding: 1.5rem 1rem;
   margin: unset;
   ul {
     display: flex;
     justify-content: flex-end;
+    @media screen and (max-width: $small) {
+      display: none;
+    }
   }
 }
 </style>
