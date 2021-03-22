@@ -28,30 +28,46 @@
         <img class="pattern" src="@/assets/pattern.svg" alt="pattern" />
       </nav>
       <img class="blob" src="@/assets/blob.svg" alt="blob" />
-      <div
-        data-aos="fade-up"
-        data-aos-offset="-100"
-        data-aos-delay="50"
-        data-aos-duration="1000"
-        data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
-        data-aos-mirror="true"
-        data-aos-once="true"
-        data-aos-anchor-placement="top-center"
-        class="hero"
-      >
-        <h1>Smart Image-to-text</h1>
-        <h1>conversion</h1>
-        <div class="hero-body">
+      <div class="hero">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="-50"
+          data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
+          data-aos-mirror="true"
+          data-aos-once="true"
+        >
+          Smart Image-to-text
+        </h1>
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="-50"
+          data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
+          data-aos-mirror="true"
+          data-aos-once="true"
+        >
+          conversion
+        </h1>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="-50"
+          data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
+          data-aos-mirror="true"
+          data-aos-once="true"
+          class="hero-body"
+        >
           <p>Convert your snapped notes to texts in</p>
           <p>one place, easily edit extracted texts and</p>
           <p>export to PDF or save to cloud</p>
         </div>
-        <div class="hero-links">
+        <section class="hero-links">
           <NuxtLink class="signup" to="signup">Start Free Trial</NuxtLink>
           <NuxtLink class="login" to="login"
             >Sign In <img src="@/assets/login.svg" alt="login"
           /></NuxtLink>
-        </div>
+        </section>
       </div>
       <img
         class="semi-circle"
@@ -59,7 +75,7 @@
         alt="semi-circle"
         data-aos="fade-up-right"
         data-aos-offset="-100"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
         data-aos-once="true"
@@ -68,7 +84,7 @@
       <div class="offer-header">
         <span
           data-aos="fade-up"
-          data-aos-duration="1000"
+          data-aos-duration="700"
           data-aos-offset="-50"
           data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
           data-aos-mirror="true"
@@ -80,7 +96,7 @@
       <div
         class="offer-body"
         data-aos="fade-up"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-offset="-50"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
@@ -100,7 +116,7 @@
       <div
         class="offer-body second"
         data-aos="fade-up"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-offset="-50"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
@@ -120,7 +136,7 @@
       <div
         class="offer-body"
         data-aos="fade-up"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-offset="-50"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
@@ -142,7 +158,7 @@
       <img
         data-aos="fade-right"
         data-aos-offset="-100"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
         data-aos-once="true"
@@ -161,7 +177,7 @@
       <img
         data-aos="fade-up-left"
         data-aos-offset="-100"
-        data-aos-duration="1000"
+        data-aos-duration="700"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
         data-aos-mirror="true"
         data-aos-once="true"
@@ -252,7 +268,7 @@ main {
     }
     transform: translateX(100%);
     transform-origin: right;
-    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     &.visible {
       transform: translateX(0);
@@ -400,6 +416,7 @@ nav {
   }
   .hero-links {
     margin-top: 3.125rem;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     a.signup {
       background-color: $primary-blue;
       color: white;
