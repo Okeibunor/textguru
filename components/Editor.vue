@@ -55,9 +55,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .ck-editor__editable_inline {
   min-height: 500px;
   min-width: 800px;
+  @media screen and (max-width: 768px) {
+    min-width: 300px;
+    min-height: 800px;
+  }
 }
 </style>

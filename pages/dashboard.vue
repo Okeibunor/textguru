@@ -151,20 +151,21 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/css/_typography.scss";
 @import "../assets/css/_colors.scss";
+@import "../assets/css/_main.scss";
 .upload_wrap {
-  padding: 30px;
-  border-radius: 30px;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-  margin: 40px auto 20px;
+  padding: 1.875rem;
+  border-radius: 1.875rem;
+  box-shadow: 0rem 0.1875rem 0.25rem rgba(0, 0, 0, 0.25);
+  margin: 2.5rem auto 1.25rem;
 }
 .upload {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
-  border-radius: 30px;
-  border: 2px dashed #5dca29;
+  padding: 3.125rem 0;
+  border-radius: 1.875rem;
+  border: 0.125rem dashed #5dca29;
   text-align: center;
 }
 .upload:hover {
@@ -176,23 +177,23 @@ export default {
 
   color: $primary-blue;
   &.small {
-    font-size: 20px;
-    word-spacing: 5px;
-    line-height: 28px;
+    font-size: 1.25rem;
+    word-spacing: 0.3125rem;
+    line-height: 1.75rem;
   }
   &.mid {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
 .btn {
   background-color: $primary-blue;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+  border-radius: 0.3125rem;
+  padding: 0.625rem 1.25rem;
   color: white;
-  font-size: 15px;
-  margin: 18px auto;
+  font-size: 0.9375rem;
+  margin: 1.125rem auto;
 }
 </style>

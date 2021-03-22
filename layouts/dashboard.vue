@@ -2,30 +2,39 @@
   <div class="container">
     <div class="wrapper">
       <div class="sidebar">
-        <img class="logo" src="@/assets/logo.svg" alt="logo" />
+        <NuxtLink to="/"
+          ><img class="logo" src="@/assets/logo.svg" alt="logo"
+        /></NuxtLink>
+        <NuxtLink to="/">
+          <img src="@/assets/minilogo.svg" alt="minilogo" class="minilogo"
+        /></NuxtLink>
         <ul>
           <div class="border-right"></div>
           <li class="active">
             <NuxtLink to="/dashboard"
-              ><span class="icon_home"></span> Dashboard</NuxtLink
+              ><span class="icon_home"></span><span>Dashboard</span></NuxtLink
             >
           </li>
           <li>
             <NuxtLink to="/editor"
-              ><span class="icon_editor"></span>Text Editor</NuxtLink
+              ><span class="icon_editor"></span
+              ><span>Text Editor</span></NuxtLink
             >
           </li>
           <li>
             <NuxtLink to="/documents"
-              ><span class="icon_document"></span>My Docs</NuxtLink
+              ><span class="icon_document"></span><span>My Docs</span></NuxtLink
             >
           </li>
           <li>
             <NuxtLink to="/translate"
-              ><span class="icon_translate"></span>Translate</NuxtLink
+              ><span class="icon_translate"></span
+              ><span>Translate</span></NuxtLink
             >
           </li>
-          <li @click="logout()"><span class="icon_logout"></span> Logout</li>
+          <li @click="logout()">
+            <span class="icon_logout"></span> <span>Logout</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -80,7 +89,10 @@ export default {
 }
 main {
   margin-left: 25vw;
-  padding: 20px 50px;
+  padding: 1.25rem 3.125rem;
+  @media screen and (max-width: $small) {
+    padding: 1.25rem 0.6rem;
+  }
 }
 a {
   text-decoration: none;
@@ -94,26 +106,29 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px 50px;
+  padding: 1.25rem 3.125rem;
   width: 25vw;
   ul {
     position: relative;
     height: 100%;
-    margin-top: 30px;
-    padding-bottom: 20px;
-    padding-right: 30px;
+    margin-top: 1.875rem;
+    padding-bottom: 1.25rem;
+    padding-right: 1.875rem;
     .border-right {
-      border-right: 2.5px solid rgba(196, 196, 196, 0.4);
+      border-right: 0.15625rem solid rgba(196, 196, 196, 0.4);
       position: absolute;
       top: 5%;
       bottom: 5%;
       right: 0;
+      @media screen and (max-width: $small) {
+        display: none;
+      }
     }
     li {
-      font-size: 25px;
-      line-height: 40px;
+      font-size: 1.5625rem;
+      line-height: 2.5rem;
       list-style-type: none;
-      margin: 38px auto;
+      margin: 2.375rem auto;
       display: block;
       position: relative;
       cursor: pointer;
@@ -131,13 +146,13 @@ a {
     li a ::after {
       content: "";
       height: 100%;
-      width: 5px;
+      width: 0.3125rem;
       background-color: #5dca29;
       position: absolute;
-      left: -5px;
+      left: -0.3125rem;
       bottom: 0;
       top: 0;
-      border-radius: 25px;
+      border-radius: 1.5625rem;
       transform: scaleY(0);
       transform-origin: top;
       transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -149,18 +164,30 @@ a {
       transform-origin: bottom;
       transform: scaleY(1);
     }
+    @media screen and (max-width: $small) {
+      li span:nth-of-type(2) {
+        display: none;
+      }
+    }
   }
 }
 
 .logo {
-  width: 180px;
+  width: 11.25rem;
+  object-fit: contain;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
+}
+.minilogo {
+  width: 3.5rem;
   object-fit: contain;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 
   h2 {
     @include heading-3-light($primary-blue);
@@ -176,14 +203,14 @@ a {
       }
     }
     .user {
-      margin-left: 5px;
+      margin-left: 0.3125rem;
     }
     .nav_drop {
       position: absolute;
-      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-      padding: 10px;
-      top: 45px;
-      border-radius: 5px;
+      box-shadow: 0rem 0.1875rem 0.25rem rgba(0, 0, 0, 0.25);
+      padding: 0.625rem;
+      top: 2.8125rem;
+      border-radius: 0.3125rem;
       background: white;
       transform: scale(0);
       transform-origin: center;
@@ -191,7 +218,7 @@ a {
 
       li {
         list-style-type: none;
-        margin: 15px 15px;
+        margin: 0.9375rem 0.9375rem;
         display: block;
         cursor: pointer;
         &:hover {
@@ -208,8 +235,8 @@ a {
       }
     }
     .avatar {
-      height: 50px;
-      width: 50px;
+      height: 3.125rem;
+      width: 3.125rem;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -217,12 +244,12 @@ a {
 }
 
 %icon {
-  height: 50px;
-  width: 50px;
+  height: 3.125rem;
+  width: 3.125rem;
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 3px;
+  margin-right: 0.1875rem;
 }
 .icon_home {
   @extend %icon;
@@ -248,5 +275,10 @@ a {
   @extend %icon;
   background: url("data:image/svg+xml,%3Csvg width='35' height='31' viewBox='0 0 35 31' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M34.2761 29.2681L25.5261 11.7681C25.4482 11.6124 25.3285 11.4814 25.1804 11.3899C25.0323 11.2984 24.8617 11.2499 24.6876 11.2499C24.5135 11.2499 24.3428 11.2984 24.1947 11.3899C24.0466 11.4814 23.9269 11.6124 23.8491 11.7681L20.3666 18.733C17.4533 18.613 14.6493 17.5909 12.3422 15.808C15.0231 13.0683 16.623 9.45163 16.8469 5.625H20.9375C21.1861 5.625 21.4246 5.52623 21.6004 5.35041C21.7762 5.1746 21.875 4.93614 21.875 4.6875C21.875 4.43886 21.7762 4.2004 21.6004 4.02459C21.4246 3.84877 21.1861 3.75 20.9375 3.75H11.875V0.9375C11.875 0.68886 11.7762 0.450403 11.6004 0.274587C11.4246 0.0987719 11.1861 0 10.9375 0C10.6889 0 10.4504 0.0987719 10.2746 0.274587C10.0988 0.450403 10 0.68886 10 0.9375V3.75H0.9375C0.68886 3.75 0.450403 3.84877 0.274587 4.02459C0.0987719 4.2004 0 4.43886 0 4.6875C0 4.93614 0.0987719 5.1746 0.274587 5.35041C0.450403 5.52623 0.68886 5.625 0.9375 5.625H14.968C14.7442 8.993 13.3129 12.1672 10.9369 14.5647C9.48007 13.0968 8.36643 11.3244 7.67594 9.375C7.593 9.14057 7.42033 8.9487 7.19591 8.84158C6.9715 8.73447 6.71372 8.72089 6.4793 8.80383C6.24487 8.88677 6.05299 9.05944 5.94588 9.28385C5.83876 9.50827 5.82518 9.76604 5.90813 10.0005C6.67894 12.1776 7.91551 14.1602 9.53156 15.8102C7.07353 17.7186 4.04941 18.7531 0.9375 18.75C0.68886 18.75 0.450403 18.8488 0.274587 19.0246C0.0987719 19.2004 0 19.4389 0 19.6875C0 19.9361 0.0987719 20.1746 0.274587 20.3504C0.450403 20.5262 0.68886 20.625 0.9375 20.625C4.57872 20.6284 8.11024 19.3789 10.9391 17.0863C13.3777 19.0515 16.3407 20.2555 19.4589 20.5483L15.0991 29.2681C15.044 29.3782 15.0111 29.4981 15.0024 29.6209C14.9937 29.7437 15.0092 29.8671 15.0481 29.9839C15.087 30.1007 15.1486 30.2087 15.2292 30.3017C15.3099 30.3947 15.4081 30.4709 15.5182 30.526C15.6283 30.5811 15.7482 30.6139 15.871 30.6227C15.9938 30.6314 16.1172 30.6159 16.234 30.577C16.3508 30.538 16.4588 30.4765 16.5518 30.3958C16.6448 30.3152 16.721 30.217 16.7761 30.1069L19.017 25.625H30.3581L32.5991 30.1069C32.7103 30.3293 32.9053 30.4984 33.1412 30.577C33.3771 30.6556 33.6346 30.6372 33.857 30.526C34.0793 30.4148 34.2484 30.2198 34.327 29.9839C34.4056 29.748 34.3873 29.4905 34.2761 29.2681V29.2681ZM19.9545 23.75L24.6875 14.2838L29.4206 23.75H19.9545Z' fill='%23323377'/%3E%3C/svg%3E%0A")
     no-repeat center;
+}
+.icon_mini-logo {
+  @extend %icon;
+  background: url("data:image/svg+xml,%3Csvg width='104' height='73' viewBox='0 0 104 73' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='71.5' cy='35.5' r='32.5' fill='%235DCA29'/%3E%3Cpath d='M80.7273 28.4688H90.1023C88.9091 19.8395 81.3026 13.767 71.4375 13.767C59.9105 13.767 51.0256 22.0767 51.0256 36.2244C51.0256 50.0312 59.3352 58.5966 71.6293 58.5966C82.6449 58.5966 90.5071 51.6293 90.5071 40.1449V34.6477H72.2472V41.5938H81.6222C81.4943 47.0057 77.8082 50.4361 71.6719 50.4361C64.7472 50.4361 60.3793 45.2585 60.3793 36.1392C60.3793 27.0625 64.9176 21.9276 71.5866 21.9276C76.3381 21.9276 79.5554 24.3778 80.7273 28.4688Z' fill='white'/%3E%3Cpath d='M2.13068 21.9702H15.4901V58H24.6094V21.9702H37.9688V14.3636H2.13068V21.9702Z' fill='%23323377'/%3E%3C/svg%3E%0A")
+    no-repeat;
 }
 </style>
