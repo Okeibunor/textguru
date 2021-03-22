@@ -245,6 +245,7 @@ nav {
       margin: 20px auto;
       font-size: 20px;
       cursor: pointer;
+      -webkit-appearance: none;
     }
     h2 {
       @include heading-3(black);
