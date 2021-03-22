@@ -181,7 +181,6 @@ nav {
   margin-bottom: 50px;
   .logo {
     width: 13rem;
-    height: 4rem;
     object-fit: contain;
   }
 }

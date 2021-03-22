@@ -291,7 +291,6 @@ nav {
   margin-bottom: 3.125rem;
   .logo {
     width: 13rem;
-    height: 4rem;
     object-fit: contain;
   }
   .pattern {
