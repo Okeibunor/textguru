@@ -262,9 +262,11 @@ main {
         transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
     }
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transform-origin: right;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    -webkit-transform: translateX(-100%);
+    -webkit-transform-origin-x: -100%;
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     &.visible {
       transform: translateX(0);
