@@ -216,13 +216,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$small: 600px;
-$medium: 768px;
-$large: 992px;
-$xlarge: 1200px;
-
 @import "../assets/css/_typography.scss";
 @import "../assets/css/_colors.scss";
+@import "../assets/css/_main.scss";
 
 main {
   cursor: url("@/assets/hand.svg"), auto;

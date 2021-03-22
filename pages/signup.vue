@@ -158,32 +158,46 @@ export default {
 };
 </script>
 
+
 <style lang="scss" scoped>
 @import "../assets/css/_typography.scss";
 @import "../assets/css/_colors.scss";
+@import "../assets/css/_main.scss";
 @import url("https://fonts.googleapis.com/css2?family=Gayathri:wght@100;400;700&display=swap");
 main {
-  padding: 20px 100px;
+  padding: 1.2rem 6.2rem;
+  @media screen and (max-width: $small) {
+    padding: 2rem;
+  }
   font-family: $bodyfont;
 }
 nav {
   display: grid;
   grid-template-columns: 2.3fr 4.5fr 1.5fr;
+  @media screen and (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
   font-size: 20px;
   margin-bottom: 50px;
   .logo {
-    width: 200px;
-    height: 50px;
+    width: 13rem;
+    height: 4rem;
     object-fit: contain;
   }
 }
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  @media screen and (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
   height: 100%;
 
   .leftblock {
     margin-top: 12vh;
+    @media screen and (max-width: $small) {
+      display: none;
+    }
   }
   .rightblock {
     display: flex;
@@ -191,6 +205,9 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 0 7vw;
+    @media screen and (max-width: $small) {
+      padding: 0;
+    }
     form {
       width: 100%;
     }
@@ -207,10 +224,10 @@ nav {
         box-sizing: border-box;
         border-radius: 6px;
         padding: 15px;
-        font-size: 15px;
+        font-size: 16px;
 
         &::placeholder {
-          font-size: 15px;
+          font-size: 16px;
           color: #8692a6c4;
         }
       }
@@ -301,6 +318,9 @@ figcaption {
   position: absolute;
   left: 0;
   bottom: 0;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 .pw_icon {
   position: absolute;
