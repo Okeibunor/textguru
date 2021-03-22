@@ -30,7 +30,7 @@
       <img class="blob" src="@/assets/blob.svg" alt="blob" />
       <div
         data-aos="fade-up"
-        data-aos-offset="100"
+        data-aos-offset="-100"
         data-aos-delay="50"
         data-aos-duration="1000"
         data-aos-easing="cubic-bezier(0.2,0.8,0.2,1)"
@@ -221,7 +221,7 @@ main {
     left: 0;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
     width: 100vw;
-    height: 60vh;
+    height: 100vh;
     background: white;
     z-index: 100;
     border-radius: 0 0 1.5rem 1.5rem;
@@ -250,12 +250,12 @@ main {
         transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
     }
-    transform: scale(0);
-    transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    transform-origin: 92vw 1.6rem;
+    transform: translateX(100%);
+    transform-origin: right;
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     &.visible {
-      transform: scale(1);
+      transform: translateX(0);
     }
   }
 }
