@@ -182,6 +182,10 @@ a {
 .minilogo {
   width: 3.5rem;
   object-fit: contain;
+  display: none;
+  @media screen and (max-width: $small) {
+    display: block;
+  }
 }
 
 .navbar {

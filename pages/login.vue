@@ -36,15 +36,15 @@
       <div class="rightblock">
         <h2>Sign Into Your Account</h2>
         <small>Extract every detail from your notes </small>
-        <div class="googlesignup">
+        <!-- <div class="googlesignup">
           <img
             class="google-icon"
             src="@/assets/google.svg"
             alt="google icon"
           />
           <span>Sign In with Google</span>
-        </div>
-        <section><span>Or</span></section>
+        </div> -->
+        <!-- <section><span>Or</span></section> -->
         <form @submit.prevent="signin">
           <div v-if="error" class="alert alert-danger">{{ error }}</div>
           <div class="form-group">
